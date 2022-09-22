@@ -1,23 +1,40 @@
-abstract class Animal{
-    private int age;
-    abstract void eat();
 
-    void sleep(){
-        System.out.println("Animal is sleeping...");
+public class Test {
+    public static void main(String args[]){
+        
+        eatSleep();
     }
-
+    
+    public static void eatSleep(){
+        Dog d = new Dog();
+        
+        d.eat();        // Executed with overriding
+        d.sleep();      // Executed without overriding
+        return;
+    }
 }
 
-class Dog extends Animal{
-    void eat(){
+
+abstract interface AnimalInterface{
+    
+    int age = 0;
+    
+    abstract void sleep();
+    abstract void eat();
+    
+}
+
+class Dog implements AnimalInterface
+{
+    @Override
+    public void sleep(){
+        System.out.println("Animal is sleeping...");
+    }
+    
+    @Override
+    public void eat(){
         System.out.println("Dog is eating...");
     }
 }
 
-class Test {
-    public static void main(String args[]){
-        Animal a = new Dog();
-        a.eat();        // Executed with overriding
-        a.sleep();      // Executed without overriding
-    }
-}
+
